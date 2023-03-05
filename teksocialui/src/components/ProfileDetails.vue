@@ -2,16 +2,16 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
 
-  <div class="main-content" style="background-color:black; margin:-8px">
-    <div class="pt-5 pt-lg-8 d-flex align-items-center"  >
-      <!-- Mask -->
-      <!-- Header container -->
+  <div class="main-content" style="background-color:black; margin: -8px">
+    <!-- <div class="pt-5 pt-lg-8 d-flex align-items-center"  >
       
-    </div>
+    
+      
+    </div> -->
     <!-- Page content -->
     <div class="container-fluid mt-1" >
-      <div class="row">
-        <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0" >
+      <div class="row" >
+        <div class="col-xl-4 order-xl-2 mt-4 mb-5 mb-xl-0" >
           <div class="card card-profile shadow" style="background-color:#393939">
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
@@ -27,12 +27,12 @@
                 
               </div>
             </div>
-            <div class="card-body pt-0 pt-md-4">
+            <div class="card-body pt-0 pt-md-4 ">
               <div class="row">
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                     <div>
-                      <span class="heading">22</span>
+                      <span class="heading">{{Age}}</span>
                       <span class="description">Friends</span>
                     </div>
                    
@@ -41,25 +41,28 @@
               </div>
               <div class="text-center">
                 <h3>
-                  Richa Agrawal<span class="font-weight-light">, 22</span>
+                  {{firstName}}{{lastName}}<span class="font-weight-light">{{Age}}</span>
+                </h3>
+                <h3>
+                  {{userName}}<span class="font-weight-light">{{Age}}</span>
                 </h3>
                 <div class="h5 font-weight-300">
-                  <i class="ni location_pin mr-2"></i>Gwalior, Madha Pradesh
+                  <i class="ni location_pin mr-2"></i>{{ City }}, {{ State }}
                 </div>
                 <div class="h5 mt-4">
-                  <i class="ni business_briefcase-24 mr-2"></i>Associate Engineer - TGS
+                  <i class="ni business_briefcase-24 mr-2"></i>{{ userEmail }}
                 </div>
                 <div>
-                  <i class="ni education_hat mr-2"></i> AITR, Indore
+                  <i class="ni education_hat mr-2"></i>{{ userContact }}
                 </div>
                 <hr class="my-4">
-                <p></p>
+                <p>{{userAbout}}</p>
                 <!-- <a href="#">Show more</a> -->
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-8 order-xl-1">
+        <div class="col-xl-8 order-xl-1 mt-4">
           <div class="card bg-secondary shadow">
             <div class="card-header border-0"  style="background-color:#393939">
               <div class="row align-items-center">
@@ -80,13 +83,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
-                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" >
+                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" v-model="userName" >
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label class="form-control-label" for="input-email">Email address</label>
-                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" v-model="userEmail" >
                       </div>
                     </div>
                   </div>
@@ -94,13 +97,13 @@
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First name</label>
-                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" >
+                        <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" v-model="firstName" >
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Last name</label>
-                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" >
+                        <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" v-model="lastName" >
                       </div>
                     </div>
                   </div>
@@ -113,7 +116,7 @@
                     <div class="col-md-12">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-contact">Contact</label>
-                        <input id="input-address" class="form-control form-control-alternative" placeholder="Contact No." type="text">
+                        <input id="input-address" class="form-control form-control-alternative" placeholder="Contact No." type="text" v-model="userContact" >
                       </div>
                     </div>
                   </div>
@@ -125,7 +128,7 @@
                 <div class="pl-lg-4">
                   <div class="form-group focused">
                     <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..."></textarea>
+                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ..." v-model="userAbout" >Passionate about Life</textarea >
                   </div>
                 </div>
               </form>
@@ -137,6 +140,30 @@
   </div>
 
 </template>
+
+<script setup>
+
+  import { ref } from "vue";
+
+
+
+
+  let firstName = ref ("");
+  let lastName = ref ("");
+  let userName = ref("richa");
+  let userEmail = ref("");
+  let userContact = ref("");
+  let userAbout = ref("");
+  let Age = ref("");
+  let City = ref("");
+  let State = ref("");
+
+
+
+
+
+
+</script>
 
 <script>
 // import SideNav from './components/SideNav.vue'
@@ -1013,6 +1040,7 @@ button.bg-secondary:focus {
 }
 
 .card-profile-image img {
+  margin-top: 93px;
   position: absolute;
   left: 50%;
   max-width: 180px;
@@ -1030,6 +1058,7 @@ button.bg-secondary:focus {
 }
 
 .card-profile-stats>div {
+  margin-top: 70px;
   margin-right: 1rem;
   padding: .875rem;
   text-align: center;

@@ -1,127 +1,70 @@
 <template>
-
     <div class="sidenavbar">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 
-        <!-- nav-link start -->
+
         <nav class="nav-link" :class="`${is_expanded ? 'is-expanded' : ''}`">
-            
-            <ul :class="`${ is_expanded ? 'toggle-nav-item' : 'show-full-nav-item'}`">
+
+            <ul :class="`${is_expanded ? 'toggle-nav-item' : 'show-full-nav-item'}`">
                 <div class="toggle-menu" @click="ToggleMenu">
-                    <i class="fa-solid fa-bars btn-open"></i>
-                    <i class="fa-solid fa-close btn-close"></i>
+                    <i :class="`${is_expanded ? 'fa-solid fa-bars btn-open' : 'fa-solid fa-close btn-close'}`"></i>
                 </div>
+
                 <a href="#home">
-                    <li><i class="fa-solid fa-house"></i> Home</li>
+                    <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-house icon"></i>
+                        <span>HOME</span>
+                    </li>
                 </a>
                 <a href="#about">
-                    <li><i class="fa-solid fa-user"></i> About</li>
+                    <li :class="{ active: activeTab === 1 }"><i class="fa-solid fa-comments icon"></i> <span>CHAT</span>
+                    </li>
                 </a>
                 <a href="#project">
-                    <li><i class="fa-solid fa-folder"></i> Project</li>
+                    <li :class="{ active: activeTab === 2 }"><i class="fa-solid fa-users icon"></i> <span>FRIENDS</span>
+                    </li>
                 </a>
-                <footer>
+                <footer><a href="#profile" class="side-profile">
+                    <li :class="{ active: activeTab === 3 }"><img
+                            src="@/assets/Profile_photo.png"><i ></i> <span></span>
+                    </li>
+                </a>
+            </footer>
+                <!-- <footer>
                     <a href="#project">
-                        <li><i class="fa-solid fa-sign-out"></i> Log out</li>
+                        <li><i class="fa-solid fa-sign-out icon"></i> <span>SIGN-OUT</span></li>
                     </a>
-                </footer>
+                </footer> -->
             </ul>
 
-            <!-- item navigasi saat lebar area diberi ukuran yang lebih besar atau ketika hamburger menu di klik -->
-            <!-- <ul class="full-nav-item">
-                <a href="#home">
-                    <li><i class="fa-solid fa-house"></i>Home</li>
-                </a>
-                <a href="#about">
-                    <li><i class="fa-solid fa-user"></i> About</li>
-                </a>
-                <a href="#project">
-                    <li><i class="fa-solid fa-sign-out"></i> Log Out</li>
-                </a>
-            </ul> -->
         </nav>
-       
+
     </div>
-    <!-- <ProfileDetails :is-expanded="is-expanded" > -->
-        <!-- any other content you want to pass to ProfilePage -->
-    <!-- </ProfileDetails> -->
-   
 </template>
 
 
 <script setup>
 
-import { ref } from "vue";
-
-
-const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
-
-const ToggleMenu = () => {
-    is_expanded.value = !is_expanded.value;
-    localStorage.setItem("is_expanded", is_expanded.value);
-};
-
-
-// const btnOpen = document.querySelector('.btn-open');
-// const btnClose = document.querySelector('.btn-close');
-// const fullNavItem = document.querySelector('.full-nav-item');
-
-// // jalankan fungsi ketika hamburger menu di klik
-// btnOpen.addEventListener('click', () => {
-//     // tambahkan class baru pada navbar area
-//     fullNavItem.classList.add('show-full-nav-item');
-//     // tambahkan class baru pada bagian content
-//     document.querySelector('.wrapper-header').classList.add('swipe-wrapper-header');
-//     if (fullNavItem.classList.contains('show-full-nav-item')) {
-//         // tampilkan tombol close
-//         btnClose.style.display = 'block';
-//         // sembunyikan tombol open
-//         btnOpen.style.display = 'none';
-//     };
-//     // buat function untuk menjalankan fungsi tombol close
-//     activateBtnClose();
-// });
-
-// // menjalankan fungsi tombol close
-// function activateBtnClose() {
-//     btnClose.addEventListener('click', () => {
-//         // hapus class pada navbar area
-//         fullNavItem.classList.remove('show-full-nav-item');
-//         // hapus class pada bagian content
-//         document.querySelector('.wrapper-header').classList.remove('swipe-wrapper-header');
-//         if (!fullNavItem.classList.contains('show-full-nav-item')) {
-//             // sembunyikan tombol close
-//             btnClose.style.display = 'none';
-//             // tampilkan tombol open
-//             btnOpen.style.display = 'block';
-//         };
-//     });
-// };
 
 
 </script>
 
 
-<!-- <script>
-import ProfileDetails from './ProfileDetails.vue'
-
+<script>
 export default {
-  
-  data() {
-    return {
-      isExpanded : false,
-    }
-  },
-  methods: {
-    ToggleMenu() {
-      this.isExpanded = !this.isExpanded
+    data() {
+        return {
+            activeTab: 0,
+            is_expanded: false,
+        };
+    },
+    methods: {
+        ToggleMenu() {
+            this.is_expanded = !this.is_expanded;
+        },
+    },
+};
 
-    }
-  }
-
-
-}
-</script> -->
+</script>
 
 <style lang="scss" scoped>
 /* font family google api */
@@ -162,45 +105,56 @@ i {
 
 /* brand-logo style */
 
+.show-full-nav-item span {
 
+    font-size: medium;
+    font-style: oblique;
+
+}
+
+.toggle-nav-item span {
+
+
+    color: rgb(26, 27, 27);
+    font-size: medium;
+    font-style: oblique;
+
+}
 
 
 /* toggle-menu style */
 .toggle-menu {
-
-    width: 100px;
+    justify-content: center;
     height: 50px;
     border-radius: 0px;
     font-size: 1.5rem;
     display: flex;
-    justify-content: center;
     align-items: center;
     transition: all 0.3s;
     color: rgb(186, 187, 187);
 
 }
 
-
-.toggle-menu i {
+.toggle-menu i .btn-close {
     position: absolute;
 }
 
-.toggle-menu .btn-close {
-    display: none;
-    transition: all 0.3s;
-}
+
+
 
 .toggle-menu .btn-close:hover {
+    justify-content: flex-start;
     transition: all 0.3s;
 }
 
 .toggle-menu:hover {
-    border-radius: 50%;
-    background-color: rgb(52, 53, 53);
+    border-radius: 10%;
+    color: white;
 }
 
 /* tampilan navigasi sebelum humberger menu di klik */
 .toggle-nav-item {
+    width: 100px;
     margin: 0px;
     height: 100%;
     padding: 0.6em;
@@ -222,7 +176,7 @@ i {
     display: flex;
     flex-direction: column;
     transition: all 0.3s;
-
+    color: dimgray;
 
 }
 
@@ -233,14 +187,20 @@ i {
 }
 
 .toggle-nav-item a li:hover {
-    background-color: rgb(52, 53, 53);
+    color: white;
     transition: all 0.3s;
-    
+
+}
+
+.toggle-nav-item li.active {
+    color: white;
 }
 
 /* tampilan navigasi saat humberger menu sudah di klik */
 
 .show-full-nav-item {
+    color: dimgray;
+    width: 130px;
     margin: 0px;
     height: 100%;
     position: fixed;
@@ -249,6 +209,11 @@ i {
     background-color: rgb(26, 27, 27);
     transition: width 0.3s ease-out;
 
+}
+
+.show-full-nav-item li.active {
+    text-transform: capitalize;
+    color: white;
 }
 
 .show-full-nav-item a li {
@@ -260,14 +225,15 @@ i {
 
 .show-full-nav-item a li:hover {
     padding-left: 2em;
-    background-color: rgb(52, 53, 53);
+    color: white;
     transition: all 0.3s;
 }
 
+
+
 .show-full-nav-item i {
     z-index: 1;
-    width: 20px;
-    margin-right: 2em;
+    margin-right: 1em;
     transition: all 0.3s;
 }
 
@@ -323,10 +289,22 @@ i {
 
 /* footer style */
 footer {
+    font-size: medium;
     width: 100%;
-    padding: 1em;
-    margin-top: 27em;
-    text-align: center;
+    padding: 0.5em;
+    margin-top: 10em;
+
+}
+
+.side-profile img{
+    margin-top: 20em;
+    padding: 0%;
+    margin: 0%;
+    display: flex;
+    max-width: 50px;
+    border-radius: 50%;
+    flex-direction: row;
+
 }
 
 
@@ -344,8 +322,11 @@ footer {
 
 }
 
+icon.hover {
+    color: white;
+}
 
-
-
-  
+.icon {
+    color: #F24E1E;
+}
 </style>

@@ -35,6 +35,7 @@ export default {
 #app{
   position: relative;
   margin-left: 100px;
+  margin-top: 0px;
 }
 
 .sidebar{
