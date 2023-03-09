@@ -16,6 +16,12 @@
                     </li>
                     <!-- <i class="fa-brands fa-facebook-messenger" ></i> -->
                 </router-link>
+                <router-link to="/friends">
+                    <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-users icon"></i>
+                        <span>FRIENDS</span>
+                    </li>
+                    <!-- <i class="fa-brands fa-facebook-messenger" ></i> -->
+                </router-link>
                 <!-- <router-link to="/"> <i class="fa-brands fa-facebook-messenger" ></i>
                  </router-link> -->
 
@@ -28,10 +34,10 @@
                     <li :class="{ active: activeTab === 1 }"><i class="fa-solid fa-comments icon"></i> <span>CHAT</span>
                     </li>
                 </a>
-                <a href="#project">
+                <!-- <a href="#project">
                     <li :class="{ active: activeTab === 2 }"><i class="fa-solid fa-users icon"></i> <span>FRIENDS</span>
                     </li>
-                </a>
+                </a> -->
                 <footer><router-link to="/profile/1" class="side-profile">
                     <li :class="{ active: activeTab === 3 }"><img
                             src="@/assets/Profile_photo.png"><i ></i> <span></span>
