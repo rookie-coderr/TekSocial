@@ -4,7 +4,7 @@
 
   <div class="main-content" :class="{ 'shift-right': isSidebarExpanded }"
     style="background-color:black; margin: -8px z-index:99">
-   
+
     <!-- Page content -->
     <div class="container-fluid">
       <div class="row" style="margin-left: 100px">
@@ -17,11 +17,9 @@
                 </div>
               </div>
             </div>
-            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4" style="background-color: #1C1C1C">
-
-              <div class="col-4 text-right" style=" padding-left : 423px">
-                <a href="#!" class="btn btn-info float-right">Message</a>
-
+            <div class="card-header text-center border-0" style="background-color: #1C1C1C">
+              <div class="col-12 col-md-4 text-md-right">
+                <button class="btn btn-info float-md-right w-100 mb-2 mb-md-0">Chat</button>
               </div>
             </div>
             <div class="card-body pt-0 pt-md-4 ">
@@ -29,7 +27,7 @@
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                     <div>
-                    
+
                       <span class="description">Username : {{ userName }}</span>
                     </div>
 
@@ -40,7 +38,7 @@
                 <h3>
                   {{ firstName }} {{ lastName }} , <span class="font-weight-light"> {{ age }}</span>
                 </h3>
-               
+
                 <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>{{ city }}, {{ state }}
                 </div>
@@ -52,7 +50,7 @@
                 </div>
                 <hr class="my-4">
                 <p>{{ userAbout }}</p>
-                
+
               </div>
             </div>
           </div>
@@ -80,9 +78,8 @@
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-username">Username</label>
                         <input type="text" id="input-username" class="form-control form-control-alternative"
-                          placeholder="Username" v-model.trim="userName" :readonly="!editMode"
-                          :required="editMode"
-                          :class="{'is-invalid': userNameError}">
+                          placeholder="Username" v-model.trim="userName" :readonly="!editMode" :required="editMode"
+                          :class="{ 'is-invalid': userNameError }">
                         <div class="invalid-feedback">{{ userNameError }}</div>
                       </div>
                     </div>
@@ -91,8 +88,7 @@
                         <label class="form-control-label" for="input-email">Email address</label>
                         <input type="email" id="input-email" class="form-control form-control-alternative"
                           placeholder="jesse@example.com" v-model.trim="userEmail" :readonly="!editMode"
-                          :required="editMode"
-                          :class="{'is-invalid': userEmailError}">
+                          :required="editMode" :class="{ 'is-invalid': userEmailError }">
                         <div class="invalid-feedback">{{ userEmailError }}</div>
                       </div>
                     </div>
@@ -102,20 +98,18 @@
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-first-name">First name</label>
                         <input type="text" id="input-first-name" class="form-control form-control-alternative"
-                          placeholder="First name" v-model="firstName" :readonly="!editMode"
-                          :required="editMode"
-                          :class="{'is-invalid': userfirstNameError}">
-                          <div class="invalid-feedback">{{ userfirstNameError }}</div>
+                          placeholder="First name" v-model="firstName" :readonly="!editMode" :required="editMode"
+                          :class="{ 'is-invalid': userfirstNameError }">
+                        <div class="invalid-feedback">{{ userfirstNameError }}</div>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group focused">
                         <label class="form-control-label" for="input-last-name">Last name</label>
                         <input type="text" id="input-last-name" class="form-control form-control-alternative"
-                          placeholder="Last name" v-model="lastName" :readonly="!editMode"
-                          :required="editMode"
-                          :class="{'is-invalid': userlastNameError}">
-                          <div class="invalid-feedback">{{ userlastNameError }}</div>
+                          placeholder="Last name" v-model="lastName" :readonly="!editMode" :required="editMode"
+                          :class="{ 'is-invalid': userlastNameError }">
+                        <div class="invalid-feedback">{{ userlastNameError }}</div>
                       </div>
                     </div>
                   </div>
@@ -150,7 +144,7 @@
                           placeholder="state" v-model="state" :readonly="!editMode">
                       </div>
                     </div>
-                    
+
                   </div>
                 </div>
                 <hr class="my-4">
@@ -180,17 +174,21 @@
                       :readonly="!editMode">Passionate about Life</textarea>
                   </div>
                 </div>
-               
+
                 <div class="submit-button">
-                 
-                    <button v-if="editMode" class="btn mt-4" :disabled="userNameError || userEmailError || userfirstNameError || userlastNameError" @click="submitDataToBacked(); editMode = false; showModal()">Save</button>
+
+                  <button v-if="editMode" class="btn mt-4"
+                    :disabled="userNameError || userEmailError || userfirstNameError || userlastNameError"
+                    @click="submitDataToBacked(); editMode = false; showModal()">Save</button>
                 </div>
-                <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
+                  aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div class="modal-content bg-dark text-light">
                       <div class="modal-header">
                         <h5 class="modal-title" id="successModalLabel">Success</h5>
-                        <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close text-light" data-bs-dismiss="modal"
+                          aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
                         Your changes have been saved successfully.
@@ -198,11 +196,11 @@
                     </div>
                   </div>
                 </div>
-               
+
 
 
               </form>
-             
+
             </div>
           </div>
         </div>
@@ -215,7 +213,7 @@
 
 
 <script setup>
-import { ref, onMounted , watch, computed} from "vue";
+import { ref, onMounted, watch, computed } from "vue";
 import { getDataForUser, updateDataForUser } from "../services/APIServices";
 
 import { Modal } from 'bootstrap';
@@ -277,7 +275,7 @@ watch(userEmail, (val) => {
 });
 
 const hasErrors = computed(() => {
-  return !!userNameError.value || !!userEmailError.value || 
+  return !!userNameError.value || !!userEmailError.value ||
     !!userfirstNameError.value || !!userlastNameError.value;
 });
 
@@ -367,7 +365,7 @@ export default {
   // },
   props: {
     // isSidebarExpanded: Boolean,
-    
+
   },
   data() {
     return {
@@ -1355,4 +1353,5 @@ input.disabled-input {
   background-color: #f8f9fe;
   color: #8898aa;
   cursor: not-allowed;
-}</style>
+}
+</style>

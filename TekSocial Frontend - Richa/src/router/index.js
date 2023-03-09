@@ -3,6 +3,8 @@ import ProfileDetails from '../components/ProfileDetails.vue'
 import SideNav from '../components/SideNav.vue'
 // import ProfileDetails from '../components/ProfileDetails.vue'
 import Home from '../components/Home.vue'
+import Friends from '../components/Friends.vue'
+import Chatbox from '../components/Chatbox.vue'
 import signup_login from '../components/signup_login.vue'
 
 
@@ -25,6 +27,18 @@ const routes = [
     component: ProfileDetails,
     
   },
+  {
+    path: '/friends',
+    name: 'friends-list',
+    component: Friends,
+    
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    component: Chatbox,
+    
+  }
 
  
 
