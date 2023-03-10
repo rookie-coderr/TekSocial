@@ -2,13 +2,10 @@
   <div class="app">
     <div class="sidebar">
       <SideNav v-if="!isLogin" @toggle-menu="ToggleMenu" />
-
-      <!-- <ProfileDetails :is-sidebar-expanded="isSidebarExpanded" /> -->
     </div>
     <div class="content" :class="sidebarClass">
       <router-view />
     </div>
-
   </div>
 </template>
 
@@ -16,26 +13,15 @@
 
 <script>
 import SideNav from './components/SideNav.vue';
-import ProfileDetails from './components/ProfileDetails.vue';
 import 'bootstrap/dist/css/bootstrap.css';
-
-
-
-
-
-// export default {
-//   name: 'App',
-//   components: {
-//     SideNav
-//   }
-// }
+import signup_login from './components/signup_login.vue';
 
 
 export default {
   name: 'App',
   components: {
     SideNav,
-    // ProfileDetails
+    signup_login
   },
   data() {
     return {
@@ -53,11 +39,6 @@ export default {
       return this.$route.path === '/';
     }
   }
-  //   isSignInScreen() {
-  //     return this.$route.path === '/login';
-  //   }
-  // }
-
 
 };
 </script>

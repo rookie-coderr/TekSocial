@@ -1,4 +1,4 @@
-const ENDPOINT = "http://localhost:8083";
+const ENDPOINT = "http://localhost:8090";
 
 const callAndReturn = (endPoint, options) => {
   return new Promise((resolve, reject) => {
@@ -13,6 +13,18 @@ const callAndReturn = (endPoint, options) => {
       });
   });
 };
+
+export const authenticateUser =  (email, password) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  };
+  return callAndReturn(`/authenticate`, options);
+};
+
 
 export const getDataForUser = (id) => {
   const options = {

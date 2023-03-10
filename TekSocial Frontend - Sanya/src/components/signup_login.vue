@@ -30,6 +30,7 @@
                             placeholder="Your Email"
                             id="logemail"
                             autocomplete="off"
+                            v-model="email"
                           />
                           <i class="input-icon uil uil-at"></i>
                         </div>
@@ -41,11 +42,12 @@
                             placeholder="Your Password"
                             id="logpass"
                             autocomplete="off"
+                            v-model="password"
                           />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <button class="btn mt-4" @click="onSubmit">
-                          submit
+                        <button class="btn mt-4" @click="loginUser()">
+                          SUBMIT
                         </button>
                         <div class="mb-0 mt-4 text-center">
                           <div class="link link-yellow">Forgot Password?</div>
@@ -107,20 +109,29 @@
 </template>
 
 <script setup>
-    const onSubmit = () => {
-      window.location.href = "/profile/1";
-    };
+import { authenticateUser } from '../services/APIServices';
+import {ref} from "vue";
+
+let email = ref("");
+let password = ref("");
+    const  loginUser =() =>{
+    authenticateUser(email.value,password.value).then((response)=>{window.location.href = "/profile/:id"}).catch(error=> console.log(error))
+    }
     const onSubmitSignup = () => {
       window.location.href = "/";
     };
 </script>
   
-  <script>
+  
+
+<script>
+
 export default {
   name: "signup_login",
   props: {
     msg: String,
   },
+ 
 };
 </script>
   

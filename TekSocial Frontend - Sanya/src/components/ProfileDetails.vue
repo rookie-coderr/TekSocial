@@ -1,11 +1,11 @@
-<template>
+ <template>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
 
   <div class="main-content" :class="{ 'shift-right': isSidebarExpanded }"
     style="background-color:black; margin: -8px z-index:99">
 
-    <!-- Page content -->
+
     <div class="container-fluid">
       <div class="row" style="margin-left: 100px">
         <div class="col-xl-4 order-xl-2 mt-4 mb-5 mb-xl-0">
@@ -116,7 +116,7 @@
                 </div>
                 <hr class="my-4">
 
-                <!--Address-->
+                
 
                 <h6 class="heading-small text-muted mb-4">Other Information</h6>
                 <div class="pl-lg-4">
@@ -149,7 +149,7 @@
                 </div>
                 <hr class="my-4">
 
-                <!-- Contact -->
+                
                 <h6 class="heading-small text-muted mb-4">Contact information</h6>
                 <div class="pl-lg-4">
                   <div class="row">
@@ -164,7 +164,7 @@
 
                 </div>
                 <hr class="my-4">
-                <!-- Description -->
+              
                 <h6 class="heading-small text-muted mb-4">About me</h6>
                 <div class="pl-lg-4">
                   <div class="form-group focused">
@@ -301,15 +301,7 @@ const getDataFromBackend = (id) => {
 };
 
 const submitDataToBacked = () => {
-  // if(!checkEmail(userEmail.value)){
-  //   window.alert("Please enter proper email address")
-  //   return;
-  // }
-  // if(!checkPhoneNumber(userContact.value)){
-  //   window.alert("Please enter proper contact");
-  //   return;
-  // }
-  // Validation is required for the same;
+ 
   updateDataForUser(
     idOfUser,
     userName.value,
@@ -351,9 +343,7 @@ function showModal() {
 
 <script>
 
-// import SideNav from './components/SideNav.vue'
 
-// import ModalConfirm from "./globalComponents/ModalConfirm.vue";
 
 
 
@@ -388,7 +378,7 @@ export default {
 </script>
 
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style lang="scss" scoped>
 :root {
   --light: #adb5bd;
@@ -1354,4 +1344,4 @@ input.disabled-input {
   color: #8898aa;
   cursor: not-allowed;
 }
-</style>
+</style> 
