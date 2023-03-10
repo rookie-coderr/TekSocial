@@ -14,47 +14,36 @@
                     <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-house icon"></i>
                         <span>HOME</span>
                     </li>
-                    <!-- <i class="fa-brands fa-facebook-messenger" ></i> -->
+                    
+                </router-link>
+               <router-link to="/friends">
+                    <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-comments icon"></i>
+                        <span>CHAT</span>
+                    </li>
+    
                 </router-link>
                 <router-link to="/friends">
                     <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-users icon"></i>
                         <span>FRIENDS</span>
                     </li>
-                    <!-- <i class="fa-brands fa-facebook-messenger" ></i> -->
+                    
                 </router-link>
-                <!-- <router-link to="/"> <i class="fa-brands fa-facebook-messenger" ></i>
-                 </router-link> -->
-
-                <!-- <a href="/profile">
-                    <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-house icon"></i>
-                        <span>HOME</span>
+                <router-link to="/friendRequest">
+                    <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-bell icon"></i>
+                        <span>REQUESTS</span>
                     </li>
-                </a> -->
-                <a href="#about">
-                    <li :class="{ active: activeTab === 1 }"><i class="fa-solid fa-comments icon"></i> <span>CHAT</span>
-                    </li>
-                </a>
-                <!-- <a href="#project">
-                    <li :class="{ active: activeTab === 2 }"><i class="fa-solid fa-users icon"></i> <span>FRIENDS</span>
-                    </li>
-                </a> -->
+                   
+                </router-link>
+                
+                
                 <footer><router-link to="/profile/1" class="side-profile">
                     <li :class="{ active: activeTab === 3 }"><img
                             src="@/assets/Profile_photo.png"><i ></i> <span></span>
                     </li>
                 </router-link>
-                <!-- <router-link to="/profile">
-                    <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-house icon"></i>
-                        <span>HOME</span>
-                    </li> -->
-                    <!-- <i class="fa-brands fa-facebook-messenger" ></i> -->
-                <!-- </router-link> -->
+               
             </footer>
-                <!-- <footer>
-                    <a href="#project">
-                        <li><i class="fa-solid fa-sign-out icon"></i> <span>SIGN-OUT</span></li>
-                    </a>
-                </footer> -->
+               
             </ul>
 
         </nav>
@@ -86,12 +75,8 @@ export default {
             this.is_expanded = !this.is_expanded;
             this.$emit('toggle-menu', this.is_expanded);
         },
-    },
-//     methods: {
-//     ToggleMenu() {
-//       this.$emit('toggle-menu', !this.is_expanded);
-//     }
-//   },
+    }
+
 };
 
 
@@ -326,7 +311,7 @@ footer {
     font-size: medium;
     width: 100%;
     padding: 0.5em;
-    margin-top: 10em;
+    margin-top: 5em;
 
 }
 

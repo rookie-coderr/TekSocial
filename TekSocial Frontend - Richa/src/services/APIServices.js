@@ -14,6 +14,17 @@ const callAndReturn = (endPoint, options) => {
   });
 };
 
+export const uploadProfileImage = async (formData) => {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
+  };
+  return callAndReturn(`/profile/image/upload`, options);
+};
+
 export const getDataForUser = (id) => {
   const options = {
     method: "GET",
@@ -23,6 +34,28 @@ export const getDataForUser = (id) => {
   };
   return callAndReturn(`/profile/${id}`, options);
 };
+
+export const deleteFriend = (id=3,userId) => {
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return callAndReturn(`/deletefriendrequest/${userId}/${id}`, options);
+};
+
+export const getAllFriends = (id) => {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return callAndReturn(`/getallfriends/${id}`, options);
+};
+
+
 export const updateDataForUser = (
   id,
   userName,
@@ -56,3 +89,41 @@ export const updateDataForUser = (
   };
   return callAndReturn(`/profile`, options);
 };
+
+export const getSearchedProfiles = (searckKey)=> {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return callAndReturn(`/getallusers?searchkey=${searckKey}`, options);
+}
+export const getAllFriendRequests = (id)=> {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return callAndReturn(`/getallrequests/${id}`, options);
+}
+export const sendFriendRequest = (profileId, userId)=> {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return callAndReturn(`/sendrequest/${profileId}/${userId}`, options);
+}
+export const acceptFriendRequest = (profileId, userId)=> {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  return callAndReturn(`/acceptrequest/${profileId}/${userId}`, options);
+}
+

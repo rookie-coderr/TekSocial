@@ -6,6 +6,7 @@ import Home from '../components/Home.vue'
 import Friends from '../components/Friends.vue'
 import Chatbox from '../components/Chatbox.vue'
 import signup_login from '../components/signup_login.vue'
+import FriendRequest from '../components/FriendRequest.vue'
 
 
 const routes = [
@@ -37,6 +38,12 @@ const routes = [
     path: '/chat',
     name: 'chat',
     component: Chatbox,
+    
+  },
+  {
+    path: '/friendRequest',
+    name: 'friendRequest',
+    component: FriendRequest,
     
   }
 
