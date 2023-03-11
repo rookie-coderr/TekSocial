@@ -30,6 +30,7 @@
                             placeholder="Your Email"
                             id="logemail"
                             autocomplete="off"
+                            v-model="email"
                           />
                           <i class="input-icon uil uil-at"></i>
                         </div>
@@ -41,11 +42,12 @@
                             placeholder="Your Password"
                             id="logpass"
                             autocomplete="off"
+                            v-model="password"
                           />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <button class="btn mt-4" @click="onSubmit">
-                          submit
+                        <button class="btn mt-4" @click="loginUser()">
+                          SUBMIT
                         </button>
                         <div class="mb-0 mt-4 text-center">
                           <div class="link link-yellow">Forgot Password?</div>
@@ -59,38 +61,41 @@
                         <h4 class="mb-4 pb-3 loginsignup">Sign Up</h4>
                         <div class="form-group">
                           <input
-                            type="text"
-                            name="logname"
+                            type="email"
+                            name="userEmail"
                             class="form-style"
-                            placeholder="Your Full Name"
-                            id="logname"
+                            placeholder="Your Email"
+                            id="userEmail"
                             autocomplete="off"
+                            v-model="userEmail"
                           />
                           <i class="input-icon uil uil-user"></i>
                         </div>
                         <div class="form-group mt-2">
                           <input
-                            type="email"
-                            name="logemail"
+                            type="password"
+                            name="Userpass"
                             class="form-style"
-                            placeholder="Your Email"
-                            id="logemail"
+                            placeholder="Your password"
+                            id="Userpass"
                             autocomplete="off"
+                            v-model="Userpassword"
                           />
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
                           <input
                             type="password"
-                            name="logpass"
+                            name="Userconfirmpass"
                             class="form-style"
-                            placeholder="Your Password"
-                            id="logpass"
+                            placeholder="Confirm Password"
+                            id="Userconfirmpass"
                             autocomplete="off"
+                            v-model="confirmPassword"
                           />
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
-                        <button class="btn mt-4" @click="onSubmitSignup">
+                        <button class="btn mt-4" @click="SignUpUser()">
                           submit
                         </button>
                       </div>
@@ -107,20 +112,64 @@
 </template>
 
 <script setup>
-    const onSubmit = () => {
-      window.location.href = "/profile/1";
-    };
-    const onSubmitSignup = () => {
+import { authenticateUser, registerUser } from '../services/APIServices';
+import {ref} from "vue";
+
+let email = ref("");
+let password = ref("");
+
+
+let userEmail = ref("");
+let Userpassword = ref("");
+let confirmPassword = ref("");
+
+
+    // const  loginUser =() =>{
+    // authenticateUser(email.value,password.value)
+    // .then((response)=>{
+    //   window.location.href = "/profile/:id"})
+    //   .catch(error=> console.log(error))
+    // }
+    // // const onSubmitSignup = () => {
+    // //   window.location.href = "/";
+    // // };
+
+
+    const loginUser = () => {
+      authenticateUser(email.value, password.value)
+    .then((response) => {
+      console.log(email.value, password.value);
+      localStorage.setItem("user" , JSON.stringify(response));
+      console.log(response);
+      window.location.href = "/profile/" + response.id;
+    })
+    .catch((error) => console.log(error));
+};
+
+
+const SignUpUser = () => {
+  // console.log(userEmail, Userpassword, confirmPassword);
+      registerUser(userEmail.value, Userpassword.value, confirmPassword.value)
+      // console.log(logemail.value, logpass.value, logpass.value)
+    .then((response) => {
+      // localStorage.setItem("user" , JSON.stringify(response.data));
+      // console.log(response);
       window.location.href = "/";
-    };
+    })
+    .catch((error) => console.log(error));
+};
+
 </script>
   
-  <script>
+  
+
+<script>
 export default {
   name: "signup_login",
   props: {
     msg: String,
   },
+ 
 };
 </script>
   
@@ -142,4 +191,3 @@ a {
   color: #42b983;
 }
 </style>
-  

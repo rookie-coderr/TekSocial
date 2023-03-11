@@ -36,7 +36,7 @@
           <img src="@/assets/Profile_photo.png" class="rounded-circle">
           <h2>{{ content.profileName }}</h2>
         </div>
-        <div class="btn" @click="deleteFriend(content.profileId)">Delete</div>
+        <div class="btn" @click="deleteFrnd(content.profileId)">Delete</div>
       </li>
     </ul>
     <h2 v-else class="data" style="justiy-content: center; size:100px">No friends to show</h2>
@@ -104,7 +104,7 @@ export default {
     onMounted(async () => {
       try {
         // const response = await getAllFriends(JSON.parse(localStorage.getItem("userObject")).id);
-        const response = await getAllFriends(2);
+        const response = await getAllFriends(1);
         contents.value = response.profileList;
         
       } catch (error) {
@@ -120,21 +120,21 @@ export default {
       });
     });
 
-  // function deleteFriend (userId) {
-  //     try {
-  //       // console.log(this.content);
-  //       const response = deleteFriend(1, userId);
-  //       console.log(response);
-  //       toaster.success(`Connection deleted successfully !!`);
-  //     } catch (error) {
-  //       // console.log(this.content);
-  //       // console.log(userId);
-  //       toaster.error(`Error deleting connection !!`);
-  //     }
+  function deleteFrnd (userId) {
+      try {
+        // console.log(this.content);
+        const response = deleteFriend(userId,3);
+        console.log(response);
+        toaster.success(`Connection deleted successfully !!`);
+      } catch (error) {
+        // console.log(this.content);
+        // console.log(userId);
+        toaster.error(`Error deleting connection !!`);
+      }
       
-  //   }
+    }
 
-    return { contents, searchText, filteredFriends , deleteFriend };
+    return { contents, searchText, filteredFriends , deleteFrnd };
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <div class="sidebar">
-      <SideNav v-if="!isLogin" @toggle-menu="ToggleMenu" />
+      <SideNav v-if="!isLogin" />
 
       <!-- <ProfileDetails :is-sidebar-expanded="isSidebarExpanded" /> -->
     </div>
@@ -16,8 +16,8 @@
 
 <script>
 import SideNav from './components/SideNav.vue';
-import ProfileDetails from './components/ProfileDetails.vue';
 import 'bootstrap/dist/css/bootstrap.css';
+import signup_login from './components/signup_login.vue';
 
 
 
@@ -36,6 +36,7 @@ export default {
   name: 'App',
   components: {
     SideNav,
+    signup_login
     // ProfileDetails
   },
   data() {
@@ -53,6 +54,7 @@ export default {
     isLogin(){
       return this.$route.path === '/';
     }
+       
   }
   //   isSignInScreen() {
   //     return this.$route.path === '/login';

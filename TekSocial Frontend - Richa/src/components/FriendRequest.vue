@@ -70,7 +70,7 @@ let friendRequest = ref([]);
 
 const toaster = createToaster({});
 // let userId = ref(JSON.parse(localStorage.getItem("userObject")).id);
-let userId = ref(3);
+let userId = ref(2);
 onMounted(() => {
   onLoadFunction();
 })

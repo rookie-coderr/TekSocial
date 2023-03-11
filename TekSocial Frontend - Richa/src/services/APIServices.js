@@ -1,8 +1,17 @@
 const ENDPOINT = "http://localhost:8083";
 
+const token = localStorage.getItem('token');
+
 const callAndReturn = (endPoint, options) => {
+//  const token = localStorage.getItem("token");
+  const headers = {
+    ...options.headers,
+    Authorization: `Bearer ${token}`,
+  };
+  const modifiedOptions = { ...options, headers };
+
   return new Promise((resolve, reject) => {
-    fetch(ENDPOINT + endPoint, options)
+    fetch(ENDPOINT + endPoint, modifiedOptions)
       .then((response) => response.json())
       .then((response) => {
         if (response.status === "success") {
@@ -14,42 +23,74 @@ const callAndReturn = (endPoint, options) => {
   });
 };
 
-export const uploadProfileImage = async (formData) => {
+export const authenticateUser =  (email, password) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({"email":email, "password": password }),
+  };
+  return callAndReturn(`/authenticate`, options);
+};
+
+export const registerUser =  (email, password, confirmPassword) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      
+    },
+    body: JSON.stringify({ "email":email, "password": password , "confirm_password" : confirmPassword}),
+    // body: JSON.stringify({ email, password , confirmPassword }),
+  };
+ 
+  return callAndReturn(`/register`, options);
+  
+};
+
+
+export const uploadProfileImage = async (formData, token) => {
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "multipart/form-data",
+      'Authorization': `Bearer ${token}`
     },
     body: formData,
   };
   return callAndReturn(`/profile/image/upload`, options);
 };
 
-export const getDataForUser = (id) => {
+export const getDataForUser = (id, token) => {
+  
   const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   };
   return callAndReturn(`/profile/${id}`, options);
 };
 
-export const deleteFriend = (id=3,userId) => {
+export const deleteFriend = (id=3,userId, token) => {
   const options = {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   };
   return callAndReturn(`/deletefriendrequest/${userId}/${id}`, options);
 };
 
-export const getAllFriends = (id) => {
+export const getAllFriends = (id, token) => {
   const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   };
   return callAndReturn(`/getallfriends/${id}`, options);
@@ -66,7 +107,8 @@ export const updateDataForUser = (
   userAbout,
   age,
   city,
-  state
+  state, 
+  token
 ) => {
   const data = {
     id: id,
@@ -84,46 +126,54 @@ export const updateDataForUser = (
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify(data),
   };
   return callAndReturn(`/profile`, options);
 };
 
-export const getSearchedProfiles = (searckKey)=> {
+export const getSearchedProfiles = (searckKey, token)=> {
   const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   };
   return callAndReturn(`/getallusers?searchkey=${searckKey}`, options);
 }
-export const getAllFriendRequests = (id)=> {
+export const getAllFriendRequests = (id, token)=> {
   const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   };
   return callAndReturn(`/getallrequests/${id}`, options);
 }
-export const sendFriendRequest = (profileId, userId)=> {
+export const sendFriendRequest = (profileId, userId, token)=> {
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   };
   return callAndReturn(`/sendrequest/${profileId}/${userId}`, options);
 }
-export const acceptFriendRequest = (profileId, userId)=> {
+export const acceptFriendRequest = (profileId, userId, token)=> {
   const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
     },
   };
   return callAndReturn(`/acceptrequest/${profileId}/${userId}`, options);
 }
+
+
+
 
