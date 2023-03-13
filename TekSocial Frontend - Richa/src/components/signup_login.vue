@@ -141,7 +141,7 @@ let confirmPassword = ref("");
       console.log(email.value, password.value);
       localStorage.setItem("user" , JSON.stringify(response));
       console.log(response);
-      window.location.href = "/profile/" + response.id;
+      window.location.href = "/profile";
     })
     .catch((error) => console.log(error));
 };

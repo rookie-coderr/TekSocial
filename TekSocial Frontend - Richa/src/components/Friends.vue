@@ -115,8 +115,8 @@ export default {
     const filteredFriends = computed(() => {
       return contents.value.filter((content) => {
         return content.profileName
-          // .toLowerCase()
-          // .includes(searchText.value.toLocaleLowerCase());
+          .toLowerCase()
+          .includes(searchText.value.toLocaleLowerCase());
       });
     });
 

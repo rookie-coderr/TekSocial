@@ -4,7 +4,6 @@ import SideNav from '../components/SideNav.vue'
 // import ProfileDetails from '../components/ProfileDetails.vue'
 import Home from '../components/Home.vue'
 import Friends from '../components/Friends.vue'
-import madhavChat from '../components/madhavChat.vue'
 import Chatbox from '../components/Chatbox.vue'
 import signup_login from '../components/signup_login.vue'
 import FriendRequest from '../components/FriendRequest.vue'
@@ -33,12 +32,6 @@ const routes = [
     path: '/friends',
     name: 'friends-list',
     component: Friends,
-    
-  },
-  {
-    path: '/chat',
-    name: 'ChatView',
-    component: madhavChat,
     
   },
   {
