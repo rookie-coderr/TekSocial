@@ -13,8 +13,7 @@
         <div class="friends-left-title">Friends you would like to connect</div>
         <div class="friends-grid">
           <div class="card" v-for="(profile, index) in userProfiles" :key="index">
-            <img
-              src="https://images.unsplash.com/photo-1612428978260-2b9c7df20150?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
+            <img src="@/assets/sampleProfileImage.png" 
               alt="Image" />
             <div class="details">
               <h2>{{ profile.profileName }}</h2>
@@ -69,8 +68,8 @@ let userProfiles = ref([]);
 let friendRequest = ref([]);
 
 const toaster = createToaster({});
-// let userId = ref(JSON.parse(localStorage.getItem("userObject")).id);
-let userId = ref(2);
+let userId = ref(JSON.parse(localStorage.getItem("user")).id);
+// let userId = ref(1);
 onMounted(() => {
   onLoadFunction();
 })

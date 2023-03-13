@@ -4,6 +4,7 @@ import SideNav from '../components/SideNav.vue'
 // import ProfileDetails from '../components/ProfileDetails.vue'
 import Home from '../components/Home.vue'
 import Friends from '../components/Friends.vue'
+import madhavChat from '../components/madhavChat.vue'
 import Chatbox from '../components/Chatbox.vue'
 import signup_login from '../components/signup_login.vue'
 import FriendRequest from '../components/FriendRequest.vue'
@@ -23,7 +24,7 @@ const routes = [
     
   },
   {
-    path: '/profile/:id',
+    path: '/profile',
     name: 'profile',
     component: ProfileDetails,
     
@@ -36,8 +37,8 @@ const routes = [
   },
   {
     path: '/chat',
-    name: 'chat',
-    component: Chatbox,
+    name: 'ChatView',
+    component: madhavChat,
     
   },
   {
@@ -45,7 +46,13 @@ const routes = [
     name: 'friendRequest',
     component: FriendRequest,
     
-  }
+  },
+  {
+    path: '/chatbox',
+    name: 'Chatbox',
+    component: Chatbox,
+    
+  },
 
  
 

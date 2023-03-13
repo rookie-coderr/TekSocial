@@ -33,7 +33,7 @@
       </li> -->
       <li class="list" v-for="content in filteredFriends" :key="content.profileId">
         <div class="profile-section">
-          <img src="@/assets/Profile_photo.png" class="rounded-circle">
+          <img src="@/assets/sampleProfileImage.png" class="rounded-circle">
           <h2>{{ content.profileName }}</h2>
         </div>
         <div class="btn" @click="deleteFrnd(content.profileId)">Delete</div>
@@ -103,8 +103,8 @@ export default {
 
     onMounted(async () => {
       try {
-        // const response = await getAllFriends(JSON.parse(localStorage.getItem("userObject")).id);
-        const response = await getAllFriends(1);
+        const response = await getAllFriends(JSON.parse(localStorage.getItem("user")).id);
+        // const response = await getAllFriends(1);
         contents.value = response.profileList;
         
       } catch (error) {
@@ -116,7 +116,7 @@ export default {
       return contents.value.filter((content) => {
         return content.profileName
           // .toLowerCase()
-          .includes(searchText.value.toLocaleLowerCase());
+          // .includes(searchText.value.toLocaleLowerCase());
       });
     });
 
@@ -189,7 +189,8 @@ export default {
   max-width: 100%;
   font-size: xx-small;
   width: 100%;
-}.rounded-circle {
+}
+.rounded-circle {
   width: 64px;
   height: 64px;
 }

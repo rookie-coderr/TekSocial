@@ -10,13 +10,13 @@
                     <i :class="`${is_expanded ? 'fa-solid fa-bars btn-open' : 'fa-solid fa-close btn-close'}`"></i>
                 </div>
 
-                <router-link to="/profile">
+                <!-- <router-link to="/profile/:id">
                     <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-house icon"></i>
                         <span>HOME</span>
                     </li>
                     
-                </router-link>
-               <router-link to="/friends">
+                </router-link> -->
+               <router-link to="/chatbox">
                     <li :class="{ active: activeTab === 0 }"><i class="fa-solid fa-comments icon"></i>
                         <span>CHAT</span>
                     </li>
@@ -36,9 +36,8 @@
                 </router-link>
                 
                 
-                <footer><router-link to="/profile/1" class="side-profile">
-                    <li :class="{ active: activeTab === 3 }"><img
-                            src="@/assets/Profile_photo.png"><i ></i> <span></span>
+                <footer><router-link to="/profile" class="side-profile">
+                    <li :class="{ active: activeTab === 3 }"><img src="@/assets/sampleProfileImage.png" ><i ></i> <span></span>
                     </li>
                 </router-link>
                
@@ -56,7 +55,6 @@
 
 let islogin = "http://localhost:8081/" === window.location.href;
     console.log(islogin)
-
 
 
 </script>

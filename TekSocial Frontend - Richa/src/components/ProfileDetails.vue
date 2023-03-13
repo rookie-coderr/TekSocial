@@ -241,7 +241,8 @@ let userAbout = ref("");
 let age = ref("");
 let city = ref("");
 let state = ref("");
-let idOfUser = window.location.href.split("/").pop();
+let idOfUser =  JSON.parse(localStorage.getItem("user")).id
+
 onMounted(() => getDataFromBackend(idOfUser));
 const uploadFile = ()=> {
   document.getElementById("fileUpload").click();
