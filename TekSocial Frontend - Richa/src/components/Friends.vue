@@ -120,11 +120,15 @@ export default {
       });
     });
 
-  function deleteFrnd (userId) {
+  async function deleteFrnd (userId) {
       try {
+        const id = JSON.parse(localStorage.getItem("user")).id;
         // console.log(this.content);
-        const response = deleteFriend(userId,3);
-        console.log(response);
+        const response =await deleteFriend(userId,id);
+        getAllFriends(JSON.parse(localStorage.getItem("user")).id).then((response)=> {
+          contents.value = response.profileList;
+        })
+        
         toaster.success(`Connection deleted successfully !!`);
       } catch (error) {
         // console.log(this.content);
